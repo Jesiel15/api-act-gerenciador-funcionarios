@@ -1,0 +1,36 @@
+{
+  "name": "api-act-gerenciador-funcionario",
+  "version": "1.0.0",
+  "description": "API para gerenciamento de funcionários",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run start",
+    "start": "nodemon src/index.js",
+    "create-db": "npx sequelize-cli db:create",
+    "migrate": "npx sequelize db:migrate",
+    "seeder-all": "sequelize db:seed:all",
+    "reset-migrate": "npx sequelize db:migrate:undo:all && npm run migrate && npm run seeder-all",
+    "build-prod": "npm install && npm run migrate && npm run seeder-all",
+    "create-migration": "npx sequelize-cli migration:create",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jesiel Faria",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
+    "express": "^4.18.2",
+    "fs-extra": "^11.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.7.1",
+    "sequelize": "^6.35.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "sequelize-cli": "^6.2.0"
+  }
+}
