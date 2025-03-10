@@ -61,11 +61,15 @@ module.exports = {
       }
 
       const passwordHash = await generateHash(password);
-      const response = await User.findOne({ where: { email } });
-      if (response) {
-        res.status(404).json({ message: `Já existe um ${NAME_ENTITY} com este ${KEY_ID}` });
+      const responseEmail = await User.findOne({ where: { email } });
+      const responseDocument = await User.findOne({ where: { document } });
+
+      if (responseDocument) {
+        res.status(404).json({ message: `Já existe um ${NAME_ENTITY} com este documento` });
+      } else if (responseEmail) {
+        res.status(404).json({ message: `Já existe um ${NAME_ENTITY} com este email` });
       } else {
-        const response = await User.create({ name, email, document, phone, manager_name, date_of_birth, profile, password: passwordHash });
+        const response = await User.create({ email, document, phone, manager_name, date_of_birth, profile, password: passwordHash });
         response.password = undefined;
         res.status(200).json({ response, message: `${NAME_ENTITY} cadastrado` });
       }
