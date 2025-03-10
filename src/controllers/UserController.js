@@ -69,7 +69,7 @@ module.exports = {
       } else if (responseEmail) {
         res.status(404).json({ message: `Já existe um ${NAME_ENTITY} com este email` });
       } else {
-        const response = await User.create({ email, document, phone, manager_name, date_of_birth, profile, password: passwordHash });
+        const response = await User.create({ name, email, document, phone, manager_name, date_of_birth, profile, password: passwordHash });
         response.password = undefined;
         res.status(200).json({ response, message: `${NAME_ENTITY} cadastrado` });
       }
