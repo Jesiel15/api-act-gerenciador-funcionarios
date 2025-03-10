@@ -15,7 +15,7 @@ module.exports = {
     try {
       const user = await User.findOne({ where: { email } });
       if (!user) {
-        res.status(401).json({ login: false, message: `${NAME_ENTITY} e senha inválidos.` });
+        res.status(401).json({ login: false, message: `${NAME_ENTITY} ou senha inválidos.` });
       } else {
         const passwordValid = await bcrypt.compare(password, user.password);
         if (passwordValid) {
@@ -23,7 +23,7 @@ module.exports = {
           const profile = user.profile;
           res.status(200).json({ login: true, profile, token, message: `${NAME_ENTITY} encontrado` });
         } else {
-          res.status(401).json({ login: false, message: `${NAME_ENTITY} e senha inválidos.` });
+          res.status(401).json({ login: false, message: `${NAME_ENTITY} ou senha inválidos.` });
         }
       }
     } catch (error) {
