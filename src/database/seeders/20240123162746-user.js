@@ -79,6 +79,17 @@ module.exports = {
           profile: USER_PROFILE_ENUM.EMPLOYEE,
           password: password,
         },
+        {
+          id: uuidv4(),
+          name: "Funcionário Teste",
+          email: "functeste@email.com",
+          document: "	93748306040",
+          phone: "61995274163",
+          manager_name: "User Admin",
+          date_of_birth: "1993-09-12",
+          profile: USER_PROFILE_ENUM.EMPLOYEE,
+          password: password,
+        },
       ],
       {}
     );
