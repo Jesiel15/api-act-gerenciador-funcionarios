@@ -10,6 +10,8 @@ async function generateHash(password) {
 module.exports = {
   async up(queryInterface, Sequelize) {
     const password = await generateHash("*Test123");
+    const passwordAdmin = await generateHash("*Admin15");
+
     await queryInterface.bulkInsert(
       "User",
       [
@@ -22,7 +24,7 @@ module.exports = {
           manager_name: "User Admin",
           date_of_birth: "1990-01-01",
           profile: USER_PROFILE_ENUM.MANAGER,
-          password: password,
+          password: passwordAdmin,
         },
         {
           id: uuidv4(),
