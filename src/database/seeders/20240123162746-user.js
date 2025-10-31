@@ -22,7 +22,7 @@ module.exports = {
           manager_name: "User Admin",
           date_of_birth: "1990-01-01",
           profile: USER_PROFILE_ENUM.MANAGER,
-          password,
+          password: password,
         },
         {
           id: uuidv4(),
